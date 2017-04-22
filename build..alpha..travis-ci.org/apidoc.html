@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.pdfmake.pdfmake">
+            function <span class="apidocSignatureSpan"></span>pdfmake
+            <span class="apidocSignatureSpan">(fontDescriptors)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.pdfmake.docMeasure">
             function <span class="apidocSignatureSpan">pdfmake.</span>docMeasure
             <span class="apidocSignatureSpan">(fontProvider, styleDictionary, defaultStyle, imageMeasure, tableLayouts, images)</span>
@@ -226,6 +235,12 @@
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfmake.</span>pageElementWriter.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfmake.</span>pdfMake</span>
 
         </li>
 
@@ -1203,6 +1218,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfmake.pdfMake">module pdfmake.pdfMake</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfmake.pdfMake.createPdf">
+            function <span class="apidocSignatureSpan">pdfmake.pdfMake.</span>createPdf
+            <span class="apidocSignatureSpan">(docDefinition)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.pdfmake.qrEnc">module pdfmake.qrEnc</a><ol>
 
         <li>
@@ -1484,6 +1512,21 @@
 
 
     <h2>
+        <a href="#apidoc.element.pdfmake.pdfmake" id="apidoc.element.pdfmake.pdfmake">
+        function <span class="apidocSignatureSpan"></span>pdfmake
+        <span class="apidocSignatureSpan">(fontDescriptors)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PdfPrinter(fontDescriptors) {
+	this.fontDescriptors = fontDescriptors;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
         <a href="#apidoc.element.pdfmake.docMeasure" id="apidoc.element.pdfmake.docMeasure">
         function <span class="apidocSignatureSpan">pdfmake.</span>docMeasure
         <span class="apidocSignatureSpan">(fontProvider, styleDictionary, defaultStyle, imageMeasure, tableLayouts, images)</span>
@@ -1711,6 +1754,8 @@
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
+
+
 
 
 
@@ -6242,6 +6287,44 @@ length - 1)) {
 	function getLineXs() {
 		var result = [];
 		var cols = 0;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfmake.pdfMake" id="apidoc.module.pdfmake.pdfMake">module pdfmake.pdfMake</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfmake.pdfMake.createPdf" id="apidoc.element.pdfmake.pdfMake.createPdf">
+        function <span class="apidocSignatureSpan">pdfmake.pdfMake.</span>createPdf
+        <span class="apidocSignatureSpan">(docDefinition)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createPdf = function (docDefinition) {
+		if (!canCreatePdf()) {
+			throw &#x27;Your browser does not provide the level of support needed&#x27;;
+		}
+		return new Document(docDefinition, window.pdfMake.tableLayouts, window.pdfMake.fonts, window.pdfMake.vfs);
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+or become pretty complex (having multi-level tables, images, lists, paragraphs, margins, styles etc...).
+
+As soon as you have the document-definition-object, you&#x27;re ready to create and open/print/download the PDF:
+
+```js
+// open the PDF in a new window
+pdfMake.<span class="apidocCodeKeywordSpan">createPdf</span>(docDefinition).open();
+
+// print the PDF
+pdfMake.createPdf(docDefinition).print();
+
+// download the PDF
+pdfMake.createPdf(docDefinition).download();
 ...</pre></li>
     </ul>
 
